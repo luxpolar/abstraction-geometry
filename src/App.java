@@ -14,5 +14,9 @@ public class App {
         System.out.println(rectangle1.showArea());
         System.out.println(triangle1.showArea());
         System.out.println("circle1.equals(circle2) = " + circle1.equals(circle2));
+        System.out.println("rectangle1.equals(circle1) = " + rectangle1.equals(circle1));
+        System.out.println("rectangle1.equals(triangle1) = " + rectangle1.equals(triangle1));
+        System.out.println("triangle1.equals(circle1) = " + triangle1.equals(circle1));
+
     }
 }
