@@ -1,22 +1,60 @@
+import ar.com.ada.geometry.abst.Figure;
 import ar.com.ada.geometry.subclass.Circle;
 import ar.com.ada.geometry.subclass.Rectangle;
 import ar.com.ada.geometry.subclass.Triangle;
+import org.w3c.dom.css.Rect;
+
+import java.util.ArrayList;
+import java.util.Scanner;
 
 public class App {
     public static void main(String[] args) {
-        Circle circle1 = new Circle(4.00);
-        Circle circle2 = new Circle(4.00);
-        Triangle triangle1 = new Triangle(3.00, 5.6);
-        Rectangle rectangle1 = new Rectangle(5.00, 3.00);
+        ArrayList<Figure> figures = new ArrayList<Figure>();
+        Scanner scanner = new Scanner(System.in);
+        int choise, i = 0;
+        do {
+            System.out.println("Elija la figura cuya área quiere calcular: 1. Rectángulo; 2. Círculo; 3. Triángulo.");
+            choise = scanner.nextInt();
+            switch (choise) {
+                case 1:
+                    Rectangle rect1 = new Rectangle();
+                    System.out.println("Ingrese el valor de la base del rectángulo: ");
+                    Double widthRec = scanner.nextDouble();
+                    System.out.println("Ingrese el valor de la altura del rectángulo: ");
+                    Double hightRec = scanner.nextDouble();
+                    rect1.setWidth(widthRec);
+                    rect1.setHight(hightRec);
+                    figures.add(rect1);
+                    i++;
+                    break;
+                case 2:
+                    System.out.println("Ingrese el valor del radio del círculo: ");
+                    Double radius1 = scanner.nextDouble();
+                    Circle cir1 = new Circle(radius1);
+                    figures.add(cir1);
+                    i++;
+                    break;
+                case 3:
+                    Triangle tri1 = new Triangle();
+                    System.out.println("Ingrese el valor de la base del rectángulo: ");
+                    Double widthTri = scanner.nextDouble();
+                    System.out.println("Ingrese el valor de la altura del rectángulo: ");
+                    Double hightTri = scanner.nextDouble();
+                    tri1.setWidth(widthTri);
+                    tri1.setHight(hightTri);
+                    figures.add(tri1);
+                    i++;
+                    break;
+                default:
+                    System.out.println("Figura no existente.");
+            }
+        } while(i < 3);
 
-        System.out.println(circle1.showArea());
-        System.out.println(circle2.showArea());
-        System.out.println(rectangle1.showArea());
-        System.out.println(triangle1.showArea());
-        System.out.println("circle1.equals(circle2) = " + circle1.equals(circle2));
-        System.out.println("rectangle1.equals(circle1) = " + rectangle1.equals(circle1));
-        System.out.println("rectangle1.equals(triangle1) = " + rectangle1.equals(triangle1));
-        System.out.println("triangle1.equals(circle1) = " + triangle1.equals(circle1));
+        for (int j = 0; j < figures.size(); j++) {
+            Figure figure = figures.get(j);
+            System.out.println("El área de la figura " + j + " es:" + figure.showArea());
+            System.out.println("Y la figura es: " + figure.toString());
+        }
 
     }
 }
